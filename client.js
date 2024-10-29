@@ -49,7 +49,7 @@ console.log('array of employee data: ',  employees );
 // This function will calculate 1 employee's bonus!
 //
 function calculateIndividualEmployeeBonus(employee) {
-  // your logic here
+  // get bonus percentage for individual based on their employee rating
   let bonusPercentage;
   let rating = employee.reviewRating;
   if (rating < 2) {
@@ -61,15 +61,24 @@ function calculateIndividualEmployeeBonus(employee) {
   } else if (rating === 5) {
     bonusPercentage = 10;
   }
+
+  // calculate total compensation for non-senior individual
+  let annualSalary = Number(employee.annualSalary);
+  let totalBonus = annualSalary * bonusPercentage / 100;
+  let totalCompensation = annualSalary + totalBonus;
+
+  // add the additional 5% for senior employees
+  // …
+
   let updatedEmployee = {
     name: employee.name,
     bonusPercentage: bonusPercentage,
-    totalCompensation: 0,
-    totalBonus: 0,
+    totalCompensation: totalCompensation,
+    totalBonus: totalBonus,
   };
   // return new object with bonus results
   console.log(`employee:`, employee);
   console.log(`new employee:`, updatedEmployee);
 }
 
-calculateIndividualEmployeeBonus(employees[0]);
+calculateIndividualEmployeeBonus(employees[1]);
